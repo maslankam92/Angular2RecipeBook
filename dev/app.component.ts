@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { RecipesComponent } from "./recipe-book/recipes.component";
+import { Routes } from "@angular/router";
+import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
+import { ROUTER_DIRECTIVES } from "@angular/router";
 
 @Component({
     selector: 'my-app',
@@ -7,17 +10,21 @@ import { RecipesComponent } from "./recipe-book/recipes.component";
     <header>
       <nav>
         <ul>
-          <li><a>Recipes</a></li>
-          <li><a>Shopping List</a></li>
+          <li><a [routerLink]="['recipes']">Recipes</a></li>
+          <li><a [routerLink]="['shopping-list']">Shopping List</a></li>
         </ul>
       </nav>    
     </header>
     <div class="main">
-      <my-recipes></my-recipes>
+      <router-outlet></router-outlet>
     </div>
   `,
-  directives: [RecipesComponent]
+  directives: [RecipesComponent, ROUTER_DIRECTIVES]
 })
+@Routes([
+    {path: '/recipes', component: RecipesComponent},
+    {path: '/shopping-list', component: ShoppingListComponent},
+])
 
 export class AppComponent {
 }
