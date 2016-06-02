@@ -26,6 +26,10 @@ export class RecipeListComponent implements OnInit {
         this._router.navigate(['/recipes', Number(this._recipeService.getRecipeIndex(item))]);
     }
 
+    onAddRecipe() {
+        this._router.navigate(['/recipes/create']);
+    }
+
     ngOnInit():any {
         this.recipes = this._recipeService.getAllRecipes();
     }

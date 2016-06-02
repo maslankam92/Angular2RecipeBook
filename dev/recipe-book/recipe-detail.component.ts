@@ -7,18 +7,26 @@ import { ShoppingListService } from "../shared/shopping-list.service";
 
 @Component({
     templateUrl: 'templates/recipe-detail.tpl.html',
-    providers: [ShoppingListService],
-    directives: [RecipeEditComponent]
+    providers: [ShoppingListService]
 })
 export class RecipeDetailComponent implements OnActivate, OnInit {
 
     recipe: Recipe;
     private _recipeIndex: string;
 
-    constructor(private _routeSegment: RouteSegment, private _recipeService: RecipeService, private _router: Router) {}
+    constructor(private _routeSegment: RouteSegment, private _recipeService: RecipeService, private _router: Router, private _shoppingListService: ShoppingListService) {}
 
     onEdit() {
         this._router.navigate(['/recipes/edit', this._recipeIndex]);
+    }
+
+    onDelete() {
+        this._recipeService.deleteRecipe(+this._recipeIndex);
+        this._router.navigate(['/recipes']);
+    }
+
+    onAddToShoppingList() {
+        this._shoppingListService.insertItems(this.recipe.ingredients);
     }
 
     routerOnActivate(curr:RouteSegment, prev?:RouteSegment):void {

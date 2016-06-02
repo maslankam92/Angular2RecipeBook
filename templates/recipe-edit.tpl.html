@@ -1,7 +1,7 @@
 <div class="recipe">
     <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()" #f="ngForm">
         <span><button class="btn" type="submit" [disabled]="!f.valid">Save</button></span>
-        <span><button class="btn alt" (click)="onCancel()">Cancel</button></span>
+        <span><a class="btn alt" (click)="onCancel()">Cancel</a></span>
         <div class="input">
             <label for="name">Title</label>
             <input [ngFormControl]="myForm.controls['name']" type="text" id="name">
