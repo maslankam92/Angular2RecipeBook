@@ -7,15 +7,14 @@ import { ROUTER_DIRECTIVES } from "@angular/router";
 @Component({
     selector: 'my-app',
     template: `
-    <header>
-      <nav>
-        <ul>
-          <li><a [routerLink]="['recipes']">Recipes</a></li>
-          <li><a [routerLink]="['shopping-list']">Shopping List</a></li>
-        </ul>
-      </nav>    
-    </header>
-    <div class="main">
+    <div class="ui inverted menu teal">
+        <div class="ui container">
+            <div class="header item"><i class="food icon"></i>ngFOOD</div>
+            <a class="item" [routerLink]="['recipes']">Recipes</a>
+            <a class="item" [routerLink]="['shopping-list']">Shopping</a>
+        </div>
+    </div>
+    <div class="ui container">
       <router-outlet></router-outlet>
     </div>
   `,

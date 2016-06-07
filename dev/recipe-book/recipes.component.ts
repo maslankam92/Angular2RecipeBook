@@ -8,12 +8,14 @@ import { RecipeEditComponent } from "./recipe-edit.component";
 @Component({
     selector: 'my-recipes',
     template: `
-    <div class="master list">
-      <my-recipe-list></my-recipe-list>
+    <div class="column grid two ui">
+        <div class="six wide column">
+          <my-recipe-list></my-recipe-list>
+        </div>
+        <div class="ten wide column">
+          <router-outlet></router-outlet>
+        </div>
     </div>
-    <div class="detail">
-      <router-outlet></router-outlet>
-    </div>  
   `,
     providers: [RecipeService],
     directives: [RecipeListComponent, ROUTER_DIRECTIVES]

@@ -1,4 +1,4 @@
-<div class="recipe">
+<div class="ui segment">
     <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()" #f="ngForm">
         <span><button class="btn" type="submit" [disabled]="!f.valid">Save</button></span>
         <span><a class="btn alt" (click)="onCancel()">Cancel</a></span>

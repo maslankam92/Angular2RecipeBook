@@ -6,15 +6,34 @@ import { Router } from "@angular/router";
 @Component({
     selector: 'my-recipe-list',
     template:`
-        <button class="btn" (click)="onAddRecipe()">Add Recipe</button>
-        <ul>
-            <li *ngFor="let item of recipes" (click)="onSelect(item)">
-                <div class="img">
+    <div class="ui segment recipe-list-container">
+        <div class="ui vertical animated button pink inverted fluid" (click)="onAddRecipe()">
+          <div class="visible content"><i class="plus icon"></i></div>
+          <div class="hidden content">
+            Add Recipe
+          </div>
+        </div>
+        <div class="ui one cards recipe-list-cards">
+            <div class="card" *ngFor="let item of recipes" (click)="onSelect(item)">
+                <div class="image">
                     <img [src]="item.imageUrl" alt="Recipe">
                 </div>
-                <div class="text">{{item.name}}</div>
-            </li>
-        </ul>
+                <div class="content">
+                    <div class="header">{{item.name}}</div>
+                </div>
+                <div class="extra content">
+                    <span class="right floated">
+                        <i class="heart outline like icon"></i>
+                        17 likes
+                    </span>
+                    <span>
+                    <i class="user icon"></i>
+                    4 igredients
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
     `
 })
 export class RecipeListComponent implements OnInit {
