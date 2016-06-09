@@ -1,21 +1,36 @@
 <div class="ui segment">
-    <div class="info" *ngIf="recipe == null">
-        <h1>Please choose or create a recipe!</h1>
+    <div class="ui huge message pink" *ngIf="recipe == null">
+        Please choose or create a recipe!
     </div>
     <div class="recipe" *ngIf="recipe != null">
-        <h1>{{recipe.name}}</h1>
-        <span><a (click)="onEdit()">Edit</a> | <a (click)="onDelete()" class="danger">Delete</a></span>
+        <h1 class="recipe-header">{{recipe.name}}</h1>
+        <div class="ui buttons right floated">
+            <button class="ui button" (click)="onEdit()">Edit</button>
+            <div class="or"></div>
+            <button class="ui pink button" (click)="onDelete()">Delete</button>
+        </div>
+        <div class="ui divider"></div>
         <div class="img">
-            <img [src]="recipe.imageUrl">
+            <img [src]="recipe.imageUrl" class="ui image fluid">
         </div>
-        <div class="content">
-            {{recipe.content}}
-        </div>
-        <div class="list">
-            <a (click)="onAddToShoppingList()" class="btn">Add all to shoppping list</a>
-            <ul>
-                <li *ngFor="let item of recipe.ingredients">{{item.name}} ({{item.amount}})</li>
+        <div class="ui message">
+            <div class="header">
+                {{recipe.content}}
+            </div>
+            <ul class="ui divided selection list">
+                <li class="item" *ngFor="let item of recipe.ingredients">
+                    {{item.name}}
+                    <div class="ui label">{{item.amount}}</div>
+                </li>
             </ul>
+            <div>
+                <button class="ui icon button tooltip" (click)="onAddToShoppingList()" data-content="Add all ingredients to shopping list">
+                    <i class="large icons">
+                        <i class="cart icon"></i>
+                        <i class="inverted corner add icon"></i>
+                    </i>
+                </button>
+            </div>
         </div>
     </div>
 </div>

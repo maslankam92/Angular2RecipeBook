@@ -1,0 +1,13 @@
+.recipe-header {
+  display: inline-block;
+}
+
+.ui.divider {
+  margin: 0;
+}
+
+.ui.selection.list>.item:hover {
+  color: rgba(0,0,0,.4);
+  background: none;
+  cursor: default;
+}

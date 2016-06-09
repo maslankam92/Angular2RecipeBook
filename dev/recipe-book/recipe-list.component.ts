@@ -13,7 +13,7 @@ import { Router } from "@angular/router";
             Add Recipe
           </div>
         </div>
-        <div class="ui one cards recipe-list-cards">
+        <div class="ui one cards link recipe-list-cards">
             <div class="card" *ngFor="let item of recipes" (click)="onSelect(item)">
                 <div class="image">
                     <img [src]="item.imageUrl" alt="Recipe">
@@ -34,7 +34,8 @@ import { Router } from "@angular/router";
             </div>
         </div>
     </div>
-    `
+    `,
+    styleUrls: ['src/css/recipe-list.styles.css']
 })
 export class RecipeListComponent implements OnInit {
     recipes: Recipe[];
