@@ -1,0 +1,24 @@
+.ui.form .inline.fields {
+  align-items: flex-start;
+}
+
+.ui.image.fluid {
+  border: 1px solid rgba(34,36,38,.15);
+}
+
+.ui.form .inline.fields .wide.field.ingredients-container {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.ingredients-container .input-row {
+  margin: 5px 0;
+}
+
+.ingredients-container .input-name {
+  width: 50%;
+}
+
+.ingredients-container .input-amount {
+  width: 30%;
+}

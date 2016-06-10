@@ -5,7 +5,8 @@ import { Recipe } from "../shared/recipe";
 import { RecipeService } from "./recipe.service";
 
 @Component({
-    templateUrl: 'templates/recipe-edit.tpl.html'
+    templateUrl: 'templates/recipe-edit.tpl.html',
+    styleUrls: ['src/css/recipe-edit.styles.css']
 })
 export class RecipeEditComponent implements OnInit, CanDeactivate {
     recipe: Recipe;

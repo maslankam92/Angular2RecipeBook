@@ -1,37 +1,81 @@
 <div class="ui segment">
     <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()" #f="ngForm">
-        <span><button class="btn" type="submit" [disabled]="!f.valid">Save</button></span>
-        <span><a class="btn alt" (click)="onCancel()">Cancel</a></span>
-        <div class="input">
-            <label for="name">Title</label>
-            <input [ngFormControl]="myForm.controls['name']" type="text" id="name">
+        <div class="ui form">
+            <div class="inline fields">
+                <div class="three wide field">
+                    <label for="name">Title</label>
+                </div>
+                <div class="thirteen wide field">
+                    <input [ngFormControl]="myForm.controls['name']" type="text" id="name">
+                </div>
+            </div>
+            <div class="inline fields">
+                <div class="three wide field">
+                    <label for="image-url">Image URL</label>
+                </div>
+                <div class="thirteen wide field">
+                    <input [ngFormControl]="myForm.controls['imageUrl']" type="text" id="image-url" #imageUrl>
+                </div>
+            </div>
+            <div class="inline fields">
+                <div class="three wide field">
+                    <label>Image preview</label>
+                </div>
+                <div class="thirteen wide field">
+                    <img [src]="imageUrl.value" class="ui image fluid rounded">
+                </div>
+            </div>
+            <div class="inline fields">
+                <div class="three wide field">
+                    <label for="content">Content</label>
+                </div>
+                <div class="thirteen wide field">
+                    <textarea [ngFormControl]="myForm.controls['content']" type="text" id="content" rows="6"></textarea>
+                </div>
+            </div>
+            <div class="inline fields">
+                <div class="three wide field">
+                    <label for="content">Ingredients</label>
+                </div>
+                <div class="thirteen wide field ingredients-container">
+                    <div class="input-row" *ngFor="let item of myForm.controls['ingredients'].controls; let i = index">
+                        <input type="text" class="input-name" [ngFormControl]="item.controls['name']">
+                        <input type="text" class="input-amount" [ngFormControl]="item.controls['amount']">
+                        <div class="ui animated button" (click)="onRemoveItem(i)">
+                            <div class="visible content">
+                                <i class="remove icon"></i>
+                            </div>
+                            <div class="hidden content">Delete</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui divider"></div>
+            <div class="inline fields">
+                <div class="three wide field">
+                    <label for="content">Add Ingredient</label>
+                </div>
+                <div class="thirteen wide field ingredients-container">
+                    <div class="input-row">
+                        <input type="text" class="input-name" #itemName>
+                        <input type="text" class="input-amount" #itemAmount>
+                        <div class="ui animated button" (click)="onAddItem(itemName.value, itemAmount.value)">
+                            <div class="visible content">
+                                <i class="plus icon"></i>
+                            </div>
+                            <div class="hidden content">Add</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inline fields">
+                <div class="three wide field">
+                </div>
+                <div class="thirteen wide field">
+                    <button class="ui button pink" type="submit" [disabled]="!f.valid">Save</button>
+                    <a class="ui button" (click)="onCancel()">Cancel</a>
+                </div>
+            </div>
         </div>
-        <div class="input">
-            <label for="image-url">Image Url</label>
-            <input [ngFormControl]="myForm.controls['imageUrl']" type="text" id="image-url" #imageUrl>
-        </div>
-        <div class="img">
-            <img [src]="imageUrl.value">
-        </div>
-        <div class="input">
-            <label for="content">Content</label>
-            <textarea [ngFormControl]="myForm.controls['content']" type="text" id="content" rows="6"></textarea>
-        </div>
-        <div class="list">
-            <ul>
-                <li *ngFor="let item of myForm.controls['ingredients'].controls; let i = index">
-                    <input type="text" class="item-name" [ngFormControl]="item.controls['name']">
-                    <input type="text" class="item-amount" [ngFormControl]="item.controls['amount']">
-                    <a class="danger" (click)="onRemoveItem(i)">X</a>
-                </li>
-            </ul>
-        </div>
-
     </form>
-    <hr>
-    <div class="list">
-        <input type="text" class="item-name" #itemName>
-        <input type="text" class="item-amount" #itemAmount>
-        <a (click)="onAddItem(itemName.value, itemAmount.value)">+</a>
-    </div>
 </div>

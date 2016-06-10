@@ -15,8 +15,7 @@ import {ShoppingListService} from "../shared/shopping-list.service";
             <button type="submit" class="btn">{{ingredient === null ? 'Add' : 'Edit'}}</button>
             <button class="btn danger" *ngIf="ingredient !== null" (click)="onDelete()">Delete Item</button>
         </form>
-    `, styleUrls: ['src/css/shopping-list.css']
-
+`
 })
 export class ShoppingListEditComponent {
     @Input() ingredient:Ingredient;
